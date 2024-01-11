@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Specialist__c</fullName>
+    <defaultValue>(&quot;the_text&quot;)</defaultValue>
+    <externalId>false</externalId>
+    <label>Specialist</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Center__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Modificaciones Corporales</fullName>
+                <default>true</default>
+                <label>Modificaciones Corporales</label>
+            </value>
+            <value>
+                <fullName>Reconstrucción Facial</fullName>
+                <default>false</default>
+                <label>Reconstrucción Facial</label>
+            </value>
+            <value>
+                <fullName>Retoques estéticos</fullName>
+                <default>false</default>
+                <label>Retoques estéticos</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Barcelona</controllingFieldValue>
+            <controllingFieldValue>Madrid</controllingFieldValue>
+            <controllingFieldValue>Tarragona</controllingFieldValue>
+            <controllingFieldValue>Valencia</controllingFieldValue>
+            <controllingFieldValue>Zaragoza</controllingFieldValue>
+            <valueName>Modificaciones Corporales</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Barcelona</controllingFieldValue>
+            <controllingFieldValue>Zaragoza</controllingFieldValue>
+            <valueName>Reconstrucción Facial</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Madrid</controllingFieldValue>
+            <controllingFieldValue>Valencia</controllingFieldValue>
+            <controllingFieldValue>Zaragoza</controllingFieldValue>
+            <valueName>Retoques estéticos</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

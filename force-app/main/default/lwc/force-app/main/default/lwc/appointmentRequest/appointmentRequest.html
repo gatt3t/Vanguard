@@ -1,0 +1,107 @@
+<!-- 
+    Component: AppointmentRequestModule
+    Description: Lightning web component to facilitate the appointment request process.
+    Author: David Rivas
+    Date: 
+    Version: 1.0
+-->
+<template>
+    <!-- Main Lightning Card for Appointment Request Module -->
+    <lightning-card title="Appointment Request Module">
+        <!-- First screen -->
+        <template if:true={showDateSelection}>
+            <div class="slds-form slds-form_stacked slds-align_absolute-center slds-grid_vertical">
+                <div class="slds-size_2-of-3">
+                    <p>Enter the date, center and specialist of the appointment</p>
+                    <lightning-input type="date" required label="Appointment Date" placeholder="Select Date" value={selectedDate} onchange={handleDateChange} min={today}></lightning-input>
+                </div>
+                <div class="slds-size_2-of-3">
+                    <lightning-combobox name="Clinic" required label="Clinic" placeholder="Select Clinic" options={clinicOptions} onchange={handleClinicChange}></lightning-combobox>
+                </div>
+                <div class="slds-size_2-of-3">
+                    <lightning-combobox name="Specialist" required label="Specialist" placeholder="Select Specialist" options={specialistOptions} onchange={handleSpecialistChange}></lightning-combobox>
+                </div>
+                <div class="slds-size_2-of-3">
+                    <div class="slds-grid slds-gutters slds-align_absolute-center">
+                        <lightning-button variant="brand" label="Next" onclick={handleNext}></lightning-button>
+                    </div>
+                </div>
+            </div>
+        </template>
+        <!-- Second screen -->
+        <template if:true={showTimeSlots}>
+            <div class="slds-form slds-form_stacked slds-align_absolute-center slds-grid_vertical">
+                <div class="slds-size_2-of-3">
+                    <p>Enter the appointment time</p>
+                    <lightning-input type="time" required label="Appointment Time" placeholder="Select Time" value={selectedTime} onchange={handleTimeChange}></lightning-input>
+                </div>
+                <div class="slds-size_2-of-3">
+                    <div class="slds-grid slds-gutters slds-align_absolute-center">
+                        <lightning-button class="slds-var-m-right_small" variant="neutral" label="Back" onclick={handleBack}></lightning-button>
+                        <lightning-button variant="brand" label="Next" onclick={handleNext}></lightning-button>
+                    </div>
+                </div>
+            </div>
+        </template>
+        <!-- Third screen -->
+        <template if:true={showContactInfo}>
+            
+            <div class="slds-form slds-form_stacked slds-align_absolute-center slds-grid_vertical">
+                <div class="slds-size_2-of-3 ">
+                    <p>Enter contact information:</p>
+                    <lightning-input type="text" label="Full Name" required placeholder="Enter Full name" value={contactInfo.name} onchange={handleNameChange}></lightning-input>
+                </div>
+                <div class="slds-size_2-of-3">
+                    <lightning-input type="email" label="Mail" required placeholder="Enter a mail"  value={contactInfo.email} onchange={handleEmailChange}></lightning-input>
+                </div>
+                <div class="slds-size_2-of-3">
+                    <lightning-input type="tel" label="Phone" required placeholder="Enter a phone number, maximum 9 digits" value={contactInfo.phone} onchange={handlePhoneChange} pattern="[0-9]{9}" format-style="decimal"></lightning-input>
+                </div>
+                <div class="slds-size_2-of-3">
+                    <lightning-textarea type="text" label="Comments" required placeholder="Enter a comment"  value={contactInfo.comments} onchange={handleCommentsChange}></lightning-textarea>
+                </div>
+                <div class="slds-size_2-of-3">
+                    <div class="slds-grid slds-gutters slds-align_absolute-center">
+                        <lightning-button class="slds-var-m-right_small" variant="neutral" label="Back" onclick={handleBack}></lightning-button>
+                        <lightning-button variant="brand" label="Next" onclick={handleNext}></lightning-button>
+                    </div>
+                </div>
+            </div>
+        </template>
+        <!-- Fourth screen -->
+        <template if:true={showSummary}>
+            <div class="slds-form slds-form_stacked slds-align_absolute-center slds-grid_vertical">
+                <div class="slds-size_2-of-3">
+                    <lightning-input type="date" label="Appointment Date" value={selectedDate} readonly></lightning-input>
+                </div>
+                <div class="slds-size_2-of-3">
+                    <lightning-input  name="Clinic" label="Clinic" value={selectedCenter} readonly></lightning-input>
+                </div>
+                <div class="slds-size_2-of-3">
+                    <lightning-input  name="Specialist" label="Specialist" value={selectedSpecialist} readonly></lightning-input>
+                </div>
+                <div class="slds-size_2-of-3">
+                    <lightning-input  type="time" label="Appointment Time" value={selectedTime} readonly></lightning-input>
+                </div>
+                <div class="slds-size_2-of-3 ">
+                    <lightning-input  type="text" label="Full Name" value={contactInfo.name} readonly></lightning-input>
+                </div>
+                <div class="slds-size_2-of-3">
+                    <lightning-input  type="email" label="Mail" value={contactInfo.email} readonly></lightning-input>
+                </div>
+                <div class="slds-size_2-of-3">
+                    <lightning-input  type="tel" label="Phone" value={contactInfo.phone} pattern="[0-9]{9}" format-style="decimal" readonly ></lightning-input>
+                </div>
+                <div class="slds-size_2-of-3">
+                    <lightning-textarea  type="text" label="Comments" value={contactInfo.comments} readonly ></lightning-textarea>
+                </div>
+                <div class="slds-size_2-of-3">
+                    <div class="slds-grid slds-gutters slds-align_absolute-center">
+                        <lightning-button class="slds-var-m-right_small" variant="neutral" label="Back" onclick={handleBack}></lightning-button>
+                        <lightning-button variant="brand" label="Make an appointment" onclick={handleFinalSubmit}></lightning-button>
+                    </div>
+                </div>
+            </div>
+        </template>
+    </lightning-card>
+</template>
